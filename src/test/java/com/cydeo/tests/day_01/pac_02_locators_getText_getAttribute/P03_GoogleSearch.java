@@ -36,7 +36,7 @@ public class P03_GoogleSearch {
         page.waitForTimeout(3000);
 
 
-        //must have at every class this 3 close..
+        //must have at every class this 3 close...
         page.close();
         browser.close();
         playwright.close();
