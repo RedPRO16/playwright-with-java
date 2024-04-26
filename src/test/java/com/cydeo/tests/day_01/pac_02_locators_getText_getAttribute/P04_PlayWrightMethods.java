@@ -27,7 +27,7 @@ public class P04_PlayWrightMethods {
         //page.getByPlaceholder("Password").fill("incorrectpassword");
         page.querySelector("#inputPassword").fill("incorrectpassword");
 
-        //page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in")).click(); //if have more than one buttn
+        //page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in")).click(); //if have more than one buttn need to specified!!!
 
         page.getByRole(AriaRole.BUTTON).click(); //if has only one button use this
 

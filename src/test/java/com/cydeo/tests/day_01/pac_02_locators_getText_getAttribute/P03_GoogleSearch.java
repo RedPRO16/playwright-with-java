@@ -27,7 +27,7 @@ public class P03_GoogleSearch {
         // searchBoxElement.type("Selenium");
         // searchBoxElement.fill("Selenium");
         searchBoxElement.pressSequentially("Selenium",
-                //put that statement to put delay between letters while writing
+                //put that statement to put delay between letters while writing like human typing action.
                 new Locator.PressSequentiallyOptions().setDelay(100));
 
         Keyboard keyboard = page.keyboard();
