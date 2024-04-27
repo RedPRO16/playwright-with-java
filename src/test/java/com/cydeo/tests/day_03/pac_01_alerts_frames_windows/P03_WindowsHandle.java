@@ -18,7 +18,7 @@ public class P03_WindowsHandle {
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
                 .setHeadless(false)
-                .setSlowMo(1000)
+                .setSlowMo(1000)  // if use elementHandle must delete this one!!!
         );
     }
 
@@ -45,7 +45,7 @@ public class P03_WindowsHandle {
     @Test
     void test1() {
 
-        page.pause();
+        //page.pause();
 
         //get the title
         System.out.println("before clicking page title = " + page.title());

@@ -1,15 +1,14 @@
-package com.cydeo.tests.day_03.pac_02_using_utllity_methods;
+package com.cydeo.tests.day_03.pac_02_using_utllity_methods_config_reader;
 
-import com.cydeo.utils.BrowserUtils;
-import com.cydeo.utils.CRMUtils;
+import com.cydeo.utils.BrowserFactory;
+import com.cydeo.utils.ConfigurationReader;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import org.junit.jupiter.api.*;
 
-public class P01_CRMLoginTask {
-
+public class P02_UseConfigReaderWithBrowserFactory {
 
     static private Playwright playwright;
 
@@ -20,10 +19,14 @@ public class P01_CRMLoginTask {
     @BeforeAll
     static void beforeAll() {
         playwright = Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
-                .setHeadless(false)
 
-        );
+        String browserFromConfig = ConfigurationReader.getProperty("browser");
+
+        browser = BrowserFactory.getBrowser(browserFromConfig, playwright);
+
+        System.out.println("browserFromConfig = " + browserFromConfig);
+
+
     }
 
 
@@ -38,7 +41,6 @@ public class P01_CRMLoginTask {
     @BeforeEach
     void setUp() {
         page = browser.newContext().newPage();
-        page.navigate("https://login2.nextbasecrm.com/");
     }
 
     @AfterEach
@@ -46,18 +48,9 @@ public class P01_CRMLoginTask {
         page.close();
     }
 
-
     @Test
     void test1() {
 
-        CRMUtils.login(page);
-
-
-    }
-
-    @Test
-    void test2() {
-        CRMUtils.login(page,"marketing1@cydeo.com","UserUser");
-
+        page.navigate(ConfigurationReader.getProperty("googleURL"));
     }
 }

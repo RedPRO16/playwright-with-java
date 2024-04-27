@@ -4,22 +4,23 @@ import com.microsoft.playwright.Page;
 
 public class BrowserUtils {
 
-    public static void sleepWithThread(int seconds) {
+    public  static  void sleepWithThread(int seconds){
 
 
         try {
-            Thread.sleep(seconds * 1000);
+            Thread.sleep(seconds*1000);
 
-        } catch (Exception e) {
+        }catch (Exception e){
 
         }
 
     }
 
-    public static void sleepWithPage(Page page, int seconds) {
-        page.waitForTimeout(seconds * 1000);
+    public static void sleepWithPage(Page page,int seconds){
+        page.waitForTimeout(seconds*1000);
 
     }
+
 
 
 }
