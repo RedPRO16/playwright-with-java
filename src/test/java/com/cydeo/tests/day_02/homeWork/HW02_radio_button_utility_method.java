@@ -1,4 +1,4 @@
-package com.cydeo.tests.day_01.homeWork;
+package com.cydeo.tests.day_02.homeWork;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
