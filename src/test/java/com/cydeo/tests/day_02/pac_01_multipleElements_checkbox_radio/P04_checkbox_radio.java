@@ -37,7 +37,7 @@ public class P04_checkbox_radio {
         //checkbox1.click();
         checkbox1.check();
         //checkbox2.click();
-        checkbox2.check();
+        checkbox2.uncheck();
 
         BrowserUtils.sleepWithThread(3);
 

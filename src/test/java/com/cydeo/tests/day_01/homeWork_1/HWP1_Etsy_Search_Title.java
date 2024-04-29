@@ -1,4 +1,4 @@
-package com.cydeo.tests.day_01.pac_02_locators_getText_getAttribute;
+package com.cydeo.tests.day_01.homeWork_1;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;

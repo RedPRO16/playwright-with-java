@@ -1,12 +1,10 @@
-package com.cydeo.tests.day_02.homeWork;
+package com.cydeo.tests.day_02.homeWork_2;
 
 import com.cydeo.utils.BrowserUtils;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.SelectOption;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 public class HW01_dropdown {
     @Test

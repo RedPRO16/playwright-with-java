@@ -24,6 +24,13 @@ public class P05_RadioButtons {
 
         //it will not work because there is no connection between label and input tag
         // page.getByRole(AriaRole.RADIO,new Page.GetByRoleOptions().setName("Red")).click();
+        Locator Red = page.locator("#red");
+
+        System.out.println(Red.isChecked());
+
+        Red.check();
+
+        System.out.println(Red.isChecked());
 
 
         Locator hockey = page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Hockey"));
