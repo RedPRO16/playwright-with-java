@@ -7,6 +7,8 @@ import org.junit.jupiter.api.*;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class HW01_WebTable_Order_Verify {
     Page page;
     static Playwright playwright;
@@ -28,18 +30,17 @@ public class HW01_WebTable_Order_Verify {
     }
 
 
-
     @BeforeEach
-    public void setupMethod(){
+    public void setupMethod() {
         //1. Open browser
         //1. Open Chrome browser
-       page = browser.newContext().newPage();
+        page = browser.newContext().newPage();
         //2. Go to: https://practice.cydeo.com/web-tables
         page.navigate("https://practice.cydeo.com/web-tables");
     }
 
     @AfterEach
-    public void tearDownMethod(){
+    public void tearDownMethod() {
 
         BrowserUtils.sleepWithThread(3);
 
@@ -48,7 +49,7 @@ public class HW01_WebTable_Order_Verify {
     }
 
     @Test
-    public void order_verify_name_test(){
+    public void order_verify_name_test() {
 
         //2. VerifyBob’s name is listed as expected.
         //below locator is locating me the Bob Martin's cell as where it is currently stored.
@@ -56,22 +57,27 @@ public class HW01_WebTable_Order_Verify {
 
         //locate Bob's cell using its name as the text.
 
+        String bobName = page.locator("//table[@class='SampleTable']/tbody/tr[7]/td[2]").innerText();
 
-
+        System.out.println(bobName);
 
         //Expected: “Bob Martin”
 
-
+        assertEquals("Bob Martin", bobName);
 
         //3. VerifyBobMartin’s order date is as expected.
         //WebElement bobsOrderDate = driver.findElement(By.xpath("//table[@class='SampleTable']//td[.='Bob Martin']/../td[5]"));
 
+
+        String orderDate = page.locator("//table[@class='SampleTable']//td[.='Bob Martin']/../td[5]").innerText();
+
+
+        System.out.println(orderDate);
+
         //Expected: 12/31/2021
-
-
-
+        Assertions.assertEquals("12/31/2021", orderDate);
 
     }
 
-  
+
 }

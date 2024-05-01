@@ -50,7 +50,7 @@ public class P01_AlertPractice {
     void test1() {
 
 
-        //we need to use before in that example we have only one option then playwriht will handle with out this line
+        //we need to use before in that example we have only one option then playwriht will handle without this line
         page.onceDialog(d -> d.accept());
 
         page.locator("button")

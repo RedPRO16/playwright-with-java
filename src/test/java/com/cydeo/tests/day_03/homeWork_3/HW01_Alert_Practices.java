@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class HW01_Alert_Practices {
 
     Page page;
-  static   Playwright playwright;
-  static   Browser browser;
+    static Playwright playwright;
+    static Browser browser;
 
 
     @BeforeAll
@@ -31,7 +31,7 @@ public class HW01_Alert_Practices {
     }
 
     @BeforeEach
-    public void setupMethod(){
+    public void setupMethod() {
         //1. Open browser
         //1. Open Chrome browser
         page = browser.newContext().newPage();
@@ -40,7 +40,7 @@ public class HW01_Alert_Practices {
     }
 
     @AfterEach
-    public void tearDownMethod(){
+    public void tearDownMethod() {
 
         BrowserUtils.sleepWithThread(3);
 
@@ -48,20 +48,35 @@ public class HW01_Alert_Practices {
     }
 
     @Test
-    public void confirmation_alert_test2(){
+    public void confirmation_alert_test2() {
         //TC #2: Confirmation alert practice
 
         //3. Click to “Click for JS Prompt” button
+        Locator promptClick = page.locator("//button[.='Click for JS Prompt']");
+        promptClick.click();
 
+        System.out.println(promptClick.textContent());
+
+        BrowserUtils.sleepWithThread(3);
 
         //4. Type "prompt" and click to OK button from the alert
-     
+
+        page.onceDialog(dialog -> dialog.accept("prompt"));
+
+        promptClick.click();
+        BrowserUtils.sleepWithThread(3);
 
 
         //5. Verify “You entered: prompt” text is displayed.
 
-    }
+        String expectedText = "You entered: prompt";
+        String actualText = page.locator("#result").textContent();
+        System.out.println(actualText);
 
+        assertEquals(expectedText, actualText);
+
+
+    }
 
 
 }
