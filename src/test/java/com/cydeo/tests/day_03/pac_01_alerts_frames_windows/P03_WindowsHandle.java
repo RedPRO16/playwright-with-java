@@ -18,7 +18,7 @@ public class P03_WindowsHandle {
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
                 .setHeadless(false)
-                .setSlowMo(1000)  // if use elementHandle must delete this one!!!
+                .setSlowMo(1000)  // if use elementHandle must delete this one!!! Also do not use with window handle use promise
         );
     }
 
@@ -44,22 +44,21 @@ public class P03_WindowsHandle {
 
     @Test
     void test1() {
-
-        //page.pause();
+         //for Debugging process need t use below code
+        //page.pause();  (this the code for playwright inspection for code working steps)
 
         //get the title
         System.out.println("before clicking page title = " + page.title());
 
         //click "Click Here" button (it will open a new tab)
 
+        page.click("text=Click Here");
 
 /*
      //   search   it
         ElementHandle locator = page.querySelector("text=Click Here");
 
-
         locator.click();
-
 */
 
         //get second window title
@@ -69,12 +68,18 @@ public class P03_WindowsHandle {
             page.getByText("Click Here").click();
         });
 
+       // Page secondPage = page.waitForPopup(( )->{}); //if you use this way must delete .setSlowMo(1000)
+
+
         System.out.println("after clicking button second page title= " + secondPage.title());
 
         BrowserUtils.sleepWithThread(3);
+
         //go back to first page
         page.bringToFront();
         BrowserUtils.sleepWithThread(3);
+
+        //If want to go second page follow below code
         secondPage.bringToFront();
         BrowserUtils.sleepWithThread(3);
 

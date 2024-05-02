@@ -1,7 +1,9 @@
 package com.cydeo.tests.day_03.homeWork_3;
 
 import com.cydeo.utils.BrowserUtils;
+import com.cydeo.utils.Driver;
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.AriaRole;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
@@ -51,34 +53,44 @@ public class HW01_Alert_Practices {
     public void confirmation_alert_test2() {
         //TC #2: Confirmation alert practice
 
-        //3. Click to “Click for JS Prompt” button
-        Locator promptClick = page.locator("//button[.='Click for JS Prompt']");
-        promptClick.click();
-
-        System.out.println(promptClick.textContent());
-
-        BrowserUtils.sleepWithThread(3);
-
-        //4. Type "prompt" and click to OK button from the alert
-
+        //3. Type "prompt" and click to OK button from the alert (need to handle before action)
         page.onceDialog(dialog -> dialog.accept("prompt"));
 
+        //4. Click to “Click for JS Prompt” button
+        Locator promptClick = page.locator("//button[.='Click for JS Prompt']");
+
         promptClick.click();
-        BrowserUtils.sleepWithThread(3);
 
 
         //5. Verify “You entered: prompt” text is displayed.
 
         String expectedText = "You entered: prompt";
         String actualText = page.locator("#result").textContent();
+
         System.out.println(actualText);
 
         assertEquals(expectedText, actualText);
 
-
     }
 
+    @Test
+    void RAMADAN_solution() {
 
+        Driver.getPage().navigate("https://practice.cydeo.com/javascript_alerts");
+
+        String text = "Text entered testing purpose!";
+        Driver.getPage().onceDialog(dialog -> {
+            dialog.accept(text);
+            String actualResult = Driver.getPage().getByTestId("result").textContent();
+            Assertions.assertEquals(actualResult, "You entered: " + text);
+
+            //The Below codes are for debugging purposes:
+            System.out.println(Driver.getPage().getByTestId("result").textContent());
+            System.out.println(String.format("Dialog message: %s", dialog.message()));
+        });
+        Driver.getPage().getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Click for JS Prompt")).click();
+        Driver.closeDriver();
+    }
 }
 
 

@@ -48,7 +48,9 @@ public class P02_Frames {
         FrameLocator firstIframe = page.frameLocator("#mce_0_ifr");
         firstIframe.locator("#tinymce").clear();
         BrowserUtils.sleepWithThread(2);
+
         firstIframe.locator("#tinymce").fill("Here is Nesho");
+
         String pValue = firstIframe.locator("//p").textContent();
 
         System.out.println("pValue = " + pValue);

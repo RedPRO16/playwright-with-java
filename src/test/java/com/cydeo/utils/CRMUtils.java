@@ -10,6 +10,9 @@ public class CRMUtils {
         page.locator("//input[@name='USER_LOGIN']").fill("invalid@gmail.com");
         page.getByPlaceholder("password").fill("invalidpassord");
 
+        //alternative way to click
+        //page.getByPlaceholder("password").press("Enter");
+
         page.locator(".login-btn").click();
 
     }

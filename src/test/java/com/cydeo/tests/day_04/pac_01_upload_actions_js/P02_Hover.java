@@ -46,7 +46,7 @@ public class P02_Hover {
     void test2() {
         /*
         Actions actions=new Actions(Driver.getDriver());
-        actions.moveToElement(webelemnt);
+        actions.moveToElement(web element);
 
          */
 

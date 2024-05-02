@@ -47,41 +47,33 @@ public class P01_AlertPractice {
 
 
     @Test
-    void test1() {
+    void test1() { //ONLY ONE OPTION HANDLED AUTOMATICLY FROM PLAYWRIGHT
 
-
-        //we need to use before in that example we have only one option then playwriht will handle without this line
+        //we need to use before in that example we have only ONE OPTION IN ALERT DIALOG BOX then playwriht will handle without this line!!!!
         page.onceDialog(d -> d.accept());
 
         page.locator("button")
-                //.nth(0)
+                //.nth(0) is also use index method (start from 0)
                 .first().click();
-
 
         String s = page.locator("#result").textContent();
 
-
         System.out.println("s = " + s);
-
 
     }
 
 
     @Test
-    void test2() {
+    void test2() { //IF YOU HAVE TWO OPTION NEED TO HANDLE BY CLICK
 
+        page.onceDialog(d -> d.accept()); //MUST USE BEFORE ACTION THIS CODE TO HANDLE ALERT ACTION IF HVAE TWO OPTION.
 
-        page.onceDialog(d -> d.accept());
+        //page.locator("//button[.='Click for JS Confirm']").click(); //other way with location solution common used this
 
-        //   page.locator("//button[.='Click for JS Confirm']");
-
-        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Click for JS Confirm")).click();
-
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Click for JS Confirm")).click(); // can use instead of locator with playwright option
 
         String s = page.locator("#result").textContent();
 
-
         System.out.println("s = " + s);
-
     }
 }

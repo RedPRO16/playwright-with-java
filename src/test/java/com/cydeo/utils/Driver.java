@@ -23,7 +23,9 @@ public class Driver {
         if (page == null) {
             playwright = Playwright.create();
             //if your app is using id attribute you need to change default settings of the playwright
-            playwright.selectors().setTestIdAttribute("id"); //data-testid
+            playwright.selectors().setTestIdAttribute("id"); //data-testId (so will work with id attribute)
+            //if your app is using data-testId attribute you need to change default settings of the playwright
+            //playwright.selectors().setTestIdAttribute("data-testId"); //id (so will work with data-testId attribute)
             switch (browserFromConfig.toLowerCase()) {
                 case "chrome":
 
@@ -55,7 +57,7 @@ public class Driver {
             page = null;
             browser.close();
             browser = null;
-
+            playwright.close();
             playwright = null;
         }
 

@@ -57,7 +57,7 @@ public class P01_CRMLoginTask {
 
     @Test
     void test2() {
-        CRMUtils.login(page,"marketing1@cydeo.com","UserUser");
+        CRMUtils.login(page, "marketing1@cydeo.com", "UserUser");
 
     }
 }
