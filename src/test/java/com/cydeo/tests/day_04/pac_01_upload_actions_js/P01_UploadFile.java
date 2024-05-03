@@ -38,13 +38,14 @@ public class P01_UploadFile {
         BrowserUtils.sleepWithThread(3);
 
         //if you want to delete uploaded file go on with below line
-        // Driver.getPage().getByTestId("file-upload").setInputFiles(new Path[0]);
+         Driver.getPage().getByTestId("file-upload").setInputFiles(new Path[0]);
 
         BrowserUtils.sleepWithThread(3);
-//        Driver.getPage().getByTestId("file-submit").click();
-//        System.out.println(Driver.getPage().locator("//h3").textContent());
-//
-//        Assertions.assertEquals("File Uploaded!", Driver.getPage().locator("//h3").textContent());
+
+       /* Driver.getPage().getByTestId("file-submit").click();
+        System.out.println(Driver.getPage().locator("//h3").textContent());
+
+        Assertions.assertEquals("File Uploaded!", Driver.getPage().locator("//h3").textContent());*/
 
     }
 
@@ -52,6 +53,5 @@ public class P01_UploadFile {
     void tearDown() {
         Driver.closeDriver();
     }
-
 
 }
